@@ -40,6 +40,6 @@ class VGGGradCam(GradCam):
         return x 
 ```
 
-Note: For models with recurrent layers, please check [Issue](https://github.com/pytorch/pytorch/issues/10006) and modify `_model_setup_()` in gradcam.py if needed.
+Note: For models with recurrent layers, please check [Issue](https://discuss.pytorch.org/t/calculate-gradients-when-network-is-set-to-eval/50592) and overwrite `self._model_setup_()` to one's liking.
 
 Ref: [jacobgil Github](https://github.com/jacobgil/pytorch-grad-cam/)
