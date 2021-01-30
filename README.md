@@ -32,12 +32,18 @@ class VGGGradCam(GradCam):
         """
         Overwrite this one
         Return: 
-            - x
+            - x: prepared model input
         """
         # prepare the input: transform
         # prepare hidden states if have any
         x = transform(kwargs['image'])
         return x 
+
+
+gradcam = VGGGradCam(device=device, model=model)
+img = PIL.Image.open(img_path)
+heatmap = gradcam(image=img, target_layer='36')
+fused = fuse_heatmap_image(img, heatmap, resize=(299, 299))
 ```
 
 Note: For models with recurrent layers, please check [Issue](https://discuss.pytorch.org/t/calculate-gradients-when-network-is-set-to-eval/50592) and overwrite `self._model_setup_()` to one's liking.

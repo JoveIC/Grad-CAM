@@ -15,9 +15,6 @@ from misc import fuse_heatmap_image
 class VGGGradCam(GradCam):
     """
     Example given by demonstrating with a pretrained VGG19 model
-    - top predictions: 243, 242, 245, 254, 281, 180, 282
-        target_index = 243  # dog
-        target_index = 281  # cat
     """
     def forward_pass(self, x, target_layer):
         x.requires_grad = True

@@ -12,10 +12,7 @@ __all__ = ['GradCam']
 
 class GradCam():
     """
-    producing 'visual explanations' for decisions made by CNN-based models
-    - Refs:
-        - https://github.com/ramprs/grad-cam
-        + https://github.com/jacobgil/pytorch-grad-cam/
+    Produce 'visual explanations' for decisions made by CNN-based models
     """
     def __init__(self, device='cpu', model=None, hasrecurrent=False):
         self.device = device
@@ -100,11 +97,6 @@ class GradCam():
 
         - General flow:
 
-        for param in self.model.parameters():
-            param.requires_grad = False
-        x.requires_grad = True
-        self.model.zero_grad()
-
         # get the feature maps we want
         >> x = get_feature(x)
         >> target_activations = x
@@ -114,7 +106,6 @@ class GradCam():
         
         # get predicitons
         >> x = the_rest_of_the_model_before_softmax(x)
-        >> torch.argsort(output, descending=True)    # top predicitons
         """
         target_activations = None
         raise NotImplementedError('Overwrite this one')
