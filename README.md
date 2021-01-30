@@ -10,7 +10,7 @@ _Please check example.py to see an example_
 ```
 from gradcam import GradCam
 
-class VGGGradCam():
+class VGGGradCam(GradCam):
     def forward_pass(self, x, target_layer):
         """
         Overwrite this one 
